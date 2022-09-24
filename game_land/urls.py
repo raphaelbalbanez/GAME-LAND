@@ -20,8 +20,9 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('GAMELAND/', views.anuncios),
+    path('GAMELAND/', views.lista_posts),
     path('', RedirectView.as_view(url='/GAMELAND/')),
     path('login/', views.login_user),
     path('login/submit', views.submit_login),
+    path('logout/', views.logout_user),
 ]
