@@ -1,18 +1,29 @@
 <!DOCTYPE html>
+
+{% extends "model-page.html" %}
+
+{% block content %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>GAMELAND</title>
 </head>
 <body>
-    <h1>login</h1>
+    <div align="center"><h1>Login</h1></div>
     <form action="submit" method="POST">{% csrf_token %}
         <div align="center">
             <label>Usuário:</label>
+            <br>
             <input type="text" name="username">
+            <br>
             <label>Password:</label>
+            <br>
             <input type="password" name="password">
+            <br>
+            <br>
             <button type="submit">Entrar</button>
+
         </div>
     </form>
 
@@ -21,6 +32,12 @@
     <strong>Erro! </strong>{{ message }}
     </div>
     {% endfor %}
+    <div align="center">
+    <br>
+    <a href="/cadastrar">cadastrar</a>
+    </div>
+
+    {% endblock %}
 
 </body>
 </html>

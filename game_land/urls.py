@@ -22,7 +22,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('GAMELAND/', views.lista_posts),
     path('', RedirectView.as_view(url='/GAMELAND/')),
+    path('GAMELAND/anunciar/', views.anunciar),
+    path('GAMELAND/anunciar/submit', views.submit_anunciar),
+    path('GAMELAND/anunciar/delete/<int:id_post>/', views.delete_anuncio),
     path('login/', views.login_user),
     path('login/submit', views.submit_login),
     path('logout/', views.logout_user),
+    path('cadastrar/', views.criar_usuario),
+    path('atualizar-dados/', views.atualizar_dados),
 ]
