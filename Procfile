@@ -1,1 +1,1 @@
-web: gunicorn --chdir game_land game_land.wsgi
+web: gunicorn game_land.wsgi
