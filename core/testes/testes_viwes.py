@@ -21,22 +21,17 @@ class TestUsuario(unittest.TestCase):
     def test_descricao(self):
       self.assertEqual(self.admin.descricao, 'jogo novo')
 
-    def test_data(self):
-      self.assertEqual(self.admin.descricao, '12/10')
-
-
-    
     def test_nome(self):
-      self.assertEqual(self.admin2.nome, 'hugo')
+      self.assertEqual(self.admin.nome, 'hugo')
 
     def test_cpf(self):
-      self.assertEqual(self.admin2.cpf, '085*******')
+      self.assertEqual(self.admin.cpf, '085*******')
+
+    def test_senha(self):
+      self.assertEqual(self.admin.senha, '0rad*******')
 
     def test_cel(self):
-      self.assertEqual(self.admin2.cel, '81 998471385')
-    
-    def test_usuario1(self):
-      self.assertEqual(self.admin2.usuario, 'Rapha')
+      self.assertEqual(self.admin.cel, '81 998471385')
 
 if __name__ == '__main__':
   unittest.main()
