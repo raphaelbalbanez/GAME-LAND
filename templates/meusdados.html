@@ -1,0 +1,34 @@
+{% extends "model-page.html" %}
+
+
+{% block content %}
+
+
+    <h2>Meus dados</h2>
+    <ul style="font-size: 18px">    
+    {% for perfil in perfils %}
+    <li>
+        {{ perfil.nome_completo }} 
+        <br>
+        {{ perfil.cpf }}
+        <br>
+        {{ perfil.telefone }} 
+        <br>
+        <a href="atualizar-dados/?id={{ perfil.id }}">Editar</a>
+        
+    </li>
+    {% endfor %}
+    
+   
+    <a href="atualizar-dados/">Criar Perfil</a>
+    </ul>
+    <br>
+    <br>
+   
+
+    <a href="/">
+        <button type="button">Retornar</button>
+    </a>
+    
+
+{% endblock %}

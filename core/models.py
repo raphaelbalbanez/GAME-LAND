@@ -21,3 +21,5 @@ class Perfil(models.Model):
     telefone = models.CharField(max_length=16, null=True)
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
 
+
+

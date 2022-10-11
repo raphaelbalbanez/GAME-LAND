@@ -1,0 +1,23 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+
+</div>
+    <h2>Meus Anuncios</h2>
+    
+        <ul style="font-size: 18px">
+        {% for post in posts %}
+        <li>
+            {{ post.titulo }} - {{ post.Preço }} 
+            ( <a href="anunciar/?id={{ post.id }}">Editar</a>
+            /<a href="anunciar/delete/{{ post.id }}">Excluir</a>)
+        </li>
+        {% endfor %}
+        </ul>
+
+        <a href="/">
+            <button type="button">Retornar</button>
+        </a>
+           
+
+{% endblock %}

@@ -3,7 +3,9 @@
 {% block content %}
 <div align="right">
     <br>
-    <a href="/atualizar-dados">Meus dados</a>
+    <a href="meus-dados/">Meus dados</a>
+    <br>
+    <a href="meus-anuncios/">Meus anuncios</a>
 </div>
     <h2>Anuncios</h2>
     <a href="anunciar/">
@@ -13,8 +15,7 @@
         {% for post in posts %}
         <li>
             {{ post.titulo }} - {{ post.Preço }} 
-            ( <a href="anunciar/?id={{post.id}}">Editar</a>
-            /<a href="anunciar/delete/{{ post.id }}">Excluir</a>)
+            <a href="anunciar/?id={{ post.id }}">Visualizar</a>
         </li>
         {% endfor %}
         </ul>

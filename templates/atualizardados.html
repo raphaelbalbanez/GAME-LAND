@@ -3,44 +3,32 @@
 
 {% block content %}
 <div align="center">
-    <form method="POST">
 
         <form action="submit" method="POST">{% csrf_token %}
 
             <div align="center"><label>Nome Completo</label>
+            <input type="number" name="id_perfil" value="{{perfil.id}}" hidden>
+            <br>
             <br>    
-            <input type="text" name="nome_completo" value="{{Perfil.nome_completo}}">{{Perfil.nome_completo}}
+            <input type="text" name="nome_completo" value="{{perfil.nome_completo}}">
             <br>
             <br>
             <label>CPF</label>
             <br>
-            <input type="text" name="cpf" value="{{Perfil.cpf}}">
+            <input type="text" name="cpf" value="{{perfil.cpf}}">
             <br>
             <br>
             <label>Telefone</label>
             <br>
-            <input type="text" name="telefone" value="{{Perfil.telefone}}">
+            <input type="text" name="telefone" value="{{perfil.telefone}}">
             <br>
             <br>
         
-        <input type="submit" value="Confirmar" class="btn btn-sucess">
+            <button type="submit">Salvar</button>
         <a href="/">
             <button type="button">Cancelar</button>
         </a>
     </form>
 </div>
-
-    <h2>Meus dados</h2>
-    <ul style="font-size: 18px">
-    {% for perfil in perfils %}
-    <li>
-        {{ perfil.nome_completo }} 
-        <br>
-        {{ perfil.cpf }}
-        <br>
-        {{ perfil.telefone }} 
-    </li>
-    {% endfor %}
-    </ul>
 
 {% endblock %}
