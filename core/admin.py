@@ -6,6 +6,7 @@ from .models import Perfil
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('id', 'titulo', 'Preço')
+    # readonly_fields = ('view_imagem',)
     # list_filter = ('usuario', 'Preço')
 
 class PerfilAdmin(admin.ModelAdmin):

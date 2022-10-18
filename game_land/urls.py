@@ -35,5 +35,6 @@ urlpatterns = [
     path('GAMELAND/meus-dados/atualizar-dados/', views.criar_perfil),
     path('GAMELAND/meus-dados/atualizar-dados/submit', views.atualizar_dados),
     path('GAMELAND/meus-anuncios/', views.posts_usuario),
+    path('GAMELAND/ver-anuncio/', views.infoanuncio),
     
 ]

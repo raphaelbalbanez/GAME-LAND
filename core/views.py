@@ -7,6 +7,15 @@ from django.contrib import messages
 from .forms import Usuarioform
 from .models import Perfil
 
+@login_required(login_url='/login/')
+def infoanuncio(request):
+    id_post = request.GET.get('id')
+    post = Post.objects.filter(id=id_post)
+    dados = {'posts': post}
+    return render(request, 'veranuncio.html', dados)
+    
+
+@login_required(login_url='/login/')
 def criar_usuario(request):
     form = Usuarioform(request.POST)
     if request.method =="POST":

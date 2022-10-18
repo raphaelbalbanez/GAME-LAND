@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
-import django_keroku
+# import django_keroku
 from pathlib import Path
 
 
@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-eueckk)mm8@)@k(tz0af#yt#mv6*z=40@_)-9s-2de9zgglgb#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://gamee-land.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -129,4 +129,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-django_keroku.settings(locals())
+# django_keroku.settings(locals())

@@ -1,0 +1,29 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+
+</div>
+    <h2>Anuncio</h2>
+    
+        <ul style="font-size: 18px">
+        {% for post in posts %}
+        <li>
+            <label>Titulo e Preço:</label>
+            <br>
+            {{ post.titulo }} - {{ post.Preço }}
+            <br>
+            <br>
+            <label>Descricao:</label>
+            <br>
+            {{ post.descricao }}
+            
+        </li>
+        {% endfor %}
+        </ul>
+
+        <a href="/">
+            <button type="button">Retornar</button>
+        </a>
+           
+
+{% endblock %}
