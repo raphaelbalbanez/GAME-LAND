@@ -6,6 +6,15 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import Usuarioform
 from .models import Perfil
+from datetime import datetime, timedelta
+
+@login_required(login_url='/login/')
+def lista_posts_historico(request):
+    usuario = request.user
+    data_atual = datetime.now()
+    post = Post.objects.filter(usuario=usuario, data_criacao__lt=data_atual)
+    dados = {'posts':post}
+    return render(request, 'historico.html', dados)
 
 @login_required(login_url='/login/')
 def infoanuncio(request):

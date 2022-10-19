@@ -1,0 +1,19 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+    <h2>Histórico</h2>
+    <a href="../">
+        <button type="button">Voltar</button>
+    </a>
+    <ul style="font-size: 18px">
+        {% for post in posts %}
+            <li>
+                <div>
+                    {{ post.titulo }} - {{ post.get_data_post }}
+                    ( <a href="/anunciar/?id={{ post.id }}">Editar</a>
+                    / <a href="/anunciar/delete/{{ post.id }}/">Excluir</a> )
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
