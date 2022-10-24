@@ -22,6 +22,7 @@
           
             {{ post.descricao }}
             
+            
         </li>
         {% endfor %}
         <br>
@@ -41,7 +42,7 @@
 
     <ul style="font-size: 18px">
 
-        {% if coments.count > 0 %} 
+       
 
         {% for coment in coments %}
         <li>
@@ -51,11 +52,9 @@
 
         {% endfor %}
 
-    {% else %}
 
-    <label>Sem comentários</label>
 
-    {% endif %}
+   
     
     </ul>
 

@@ -1,3 +1,4 @@
+from enum import unique
 from django.db import models
 from django.contrib.auth.models import User
 from distutils.command.upload import upload
@@ -27,7 +28,7 @@ class Perfil(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
-class Comentarios(models.Model):
+class Comentario(models.Model):
     comentario = models.TextField(blank=False, null=False)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
