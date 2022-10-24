@@ -10,9 +10,7 @@ class Post(models.Model):
     data_criacao = models.DateTimeField(auto_now=True)
     Preço = models.FloatField()
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
-    # imagem = models.ImageField(upload_to="post",blank=True, null=True)
-
-
+    
     class Meta:
         db_table = 'post'
     
@@ -28,11 +26,9 @@ class Perfil(models.Model):
     telefone = models.CharField(max_length=16, null=True)
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
 
-# @property
-# def view_image(self):
-#     return mark_safe('img scr = "%s" whidth="400px" /> '%self.imagem.url)
-#     view_image.short_description = "imagem cadastrada"
-#     view_image.allow_tags = True
 
+class Comentarios(models.Model):
+    comentario = models.TextField(blank=False, null=False)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
 

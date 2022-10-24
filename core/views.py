@@ -5,8 +5,34 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import Usuarioform
-from .models import Perfil
+from .models import Comentarios, Perfil
 from datetime import datetime, timedelta
+
+@login_required(login_url='/login/')
+def criar_coment(request):
+    id_coment = request.GET.get('id')
+    dados = { }
+    if id_coment:
+        dados['coment'] = Comentarios.objects.get(id=id_coment)
+    return render(request, 'veranuncio.html', dados)
+
+@login_required(login_url='/login/')
+def editar_coment(request):
+    if request.POST:
+        comentario = request.POST.get('comentario')
+        usuario = request.user
+        id_coment = request.POST.get('id_coment') 
+        if id_coment:
+            Comentarios.objects.filter(usuario=usuario).update(comentario=comentario)
+        else:
+            Comentarios.objects.create(comentario=comentario, usuario=usuario)
+    return redirect('/')
+
+@login_required(login_url='/login/')
+def lista_coments(request):
+    coment = Comentarios.objects.filter()
+    dados = {'coments': coment}
+    return render(request, 'veranuncio.html', dados)
 
 @login_required(login_url='/login/')
 def lista_posts_historico(request):
@@ -23,8 +49,6 @@ def infoanuncio(request):
     dados = {'posts': post}
     return render(request, 'veranuncio.html', dados)
     
-
-@login_required(login_url='/login/')
 def criar_usuario(request):
     form = Usuarioform(request.POST)
     if request.method =="POST":

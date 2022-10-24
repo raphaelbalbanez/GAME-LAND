@@ -8,29 +8,63 @@
         <ul style="font-size: 18px">
         {% for post in posts %}
         <li>
-            <label>Titulo e Preço:</label>
+            <label>Titulo:</label>
+           
+            {{ post.titulo }} 
             <br>
-            {{ post.titulo }} - {{ post.Preço }}
+            <br>
+            <label>Preço:</label>
+            
+            {{ post.Preço }}
             <br>
             <br>
             <label>Descricao:</label>
-            <br>
+          
             {{ post.descricao }}
             
         </li>
         {% endfor %}
         <br>
-        <br>
-        <br>
 
-        <label>Comentarios:</label>
-        </ul>
-        <br>
-        <br>
+        <form action="submit" method="POST">{% csrf_token %}
+
+            <label>Comentarios:</label>
+            <input type="number" name="id_coment" value="{{coment.id}}" hidden>
+            <br>
+            <br>    
+            <input type="text" name="comentario" value="{{coment.comentario}}">
+           
+            <button type="submit">Salvar</button>
         
+    </form>
+    <br>
 
+    <ul style="font-size: 18px">
+
+        {% if coments.count > 0 %} 
+
+        {% for coment in coments %}
+        <li>
+            {{ coment.comentario }} 
+            
+        </li>
+
+        {% endfor %}
+
+    {% else %}
+
+    <label>Sem comentários</label>
+
+    {% endif %}
+    
+    </ul>
+
+    <br>
+       
+        
         <a href="/">
             <button type="button">Retornar</button>
         </a>
+    
            
 {% endblock %}

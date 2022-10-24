@@ -1,6 +1,7 @@
 from django.contrib import admin
 from core.models import Post
 from .models import Perfil
+from .models import Comentarios
 
 # Register your models here.
 
@@ -12,5 +13,9 @@ class PostAdmin(admin.ModelAdmin):
 class PerfilAdmin(admin.ModelAdmin):
     list_display = ('id', 'nome_completo', 'telefone')
 
+class ComentariosAdmin(admin.ModelAdmin):
+    list_display = ('id', 'comentario', 'usuario')
+
 admin.site.register(Perfil, PerfilAdmin)
 admin.site.register(Post, PostAdmin)
+admin.site.register(Comentarios, ComentariosAdmin)

@@ -5,30 +5,39 @@
 
 
     <h2>Meus dados</h2>
-    <ul style="font-size: 18px">    
+    <ul style="font-size: 18px">   
+    {% if perfils.count > 0 %} 
     {% for perfil in perfils %}
     <li>
+        <label>Nome:</label>
         {{ perfil.nome_completo }} 
         <br>
+        <br>
+        <label>CPF:</label>
         {{ perfil.cpf }}
         <br>
+        <br>
+        <label>Telefone:</label>
         {{ perfil.telefone }} 
+        <br>
         <br>
         <a href="atualizar-dados/?id={{ perfil.id }}">Editar</a>
         
     </li>
     {% endfor %}
     
-   
+    {% else %}
     <a href="atualizar-dados/">Criar Perfil</a>
+    {% endif %}
     </ul>
     <br>
     <br>
    
-
+    
     <a href="/">
         <button type="button">Retornar</button>
     </a>
+
     
 
 {% endblock %}
