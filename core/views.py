@@ -110,7 +110,6 @@ def submit_login(request):
 
 @login_required(login_url='/login/')
 def lista_posts(request):
-    # usuario = request.user
     post = Post.objects.filter()
     dados = {'posts': post}
     return render(request, 'home.html', dados)
