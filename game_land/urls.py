@@ -37,8 +37,8 @@ urlpatterns = [
     path('GAMELAND/meus-anuncios/', views.posts_usuario),
     path('GAMELAND/ver-anuncio/', views.infoanuncio),
     path('GAMELAND/meus-anuncios/historico/', views.lista_posts_historico),
-    path('GAMELAND/ver-anuncio/', views.criar_coment),
+    path('GAMELAND/ver-anuncio/?id={{ post.id }}', views.criar_coment),
     path('GAMELAND/ver-anuncio/submit', views.editar_coment),
-    path('GAMELAND/ver-anuncio/', views.lista_coments),
+    path('GAMELAND/ver-anuncio/?id={{ post.id }}', views.lista_coments),
     
 ]

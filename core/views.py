@@ -21,7 +21,7 @@ def editar_coment(request):
     if request.POST:
         comentario = request.POST.get('comentario')
         usuario = request.user
-        id_post = request.POST.get('id_post') 
+        id_post = request.POST.get('id_coment') 
         if id_post:
             Comentario.objects.filter(usuario=usuario).update(comentario=comentario)
         else:
