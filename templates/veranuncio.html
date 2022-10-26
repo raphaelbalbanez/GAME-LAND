@@ -25,6 +25,12 @@
             
             
         </li>
+
+        {% if total > 0 %}
+        <h2>{{total}} comments</h2>
+       {% else %}
+       <h2>No comments</h2>
+       {% endif %}
     
         {% for item in comments %}
         <ul>
