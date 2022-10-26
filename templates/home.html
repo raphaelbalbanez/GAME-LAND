@@ -16,7 +16,7 @@
         {% for post in posts %}
         <li>
             {{ post.titulo }} 
-            <a href="ver-anuncio/?id={{ post.id }}">Visualizar</a>
+            <a href="/GAMELAND/{{post.id}}/{{post.slug}}">Visualizar</a>
         </li>
         {% endfor %}
         </ul>

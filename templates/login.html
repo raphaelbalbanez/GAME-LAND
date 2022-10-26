@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 {% extends "model-page.html" %}
+{% load static %}
 
 {% block content %}
 
@@ -11,6 +12,7 @@
 
 </head>
 <body>
+   
     <div align="center"><h1>Login</h1></div>
     <form action="submit" method="POST">{% csrf_token %}
         <div align="center">
@@ -24,9 +26,12 @@
             <br>
             <br>
             <button type="submit">Entrar</button>
+            <link rel="stylesheet" href="{% static 'css/style.css' %}" >
+           
 
         </div>
     </form>
+    
 
     {% for message in messages %}
     <div align="center">

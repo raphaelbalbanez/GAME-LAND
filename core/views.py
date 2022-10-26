@@ -1,38 +1,28 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from core.models import Post
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import Usuarioform
-from .models import Comentario, Perfil
+from .forms import CommentForm
+from .models import Comment, Perfil
 from datetime import datetime, timedelta
 
-@login_required(login_url='/login/')
-def criar_coment(request):
-    id_coment = request.GET.get('id')
-    dados = { }
-    if id_coment:
-        dados['coment'] = Comentario.objects.get(id=id_coment)
-    return render(request, 'veranuncio.html', dados)
+def addcomment(request, id):
+    url = request.META.get('HTTP_REFERER')
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            data = Comment()
+            data.name = form.cleaned_data['name']
+            data.comment = form.cleaned_data['comment']
+            data.post_id = id
+            data.save()
+            return HttpResponseRedirect(url)
+    return HttpResponseRedirect(url)
 
-@login_required(login_url='/login/')
-def editar_coment(request):
-    if request.POST:
-        comentario = request.POST.get('comentario')
-        usuario = request.user
-        id_post = request.POST.get('id_coment') 
-        if id_post:
-            Comentario.objects.filter(usuario=usuario).update(comentario=comentario)
-        else:
-            Comentario.objects.create(comentario=comentario, usuario=usuario)
-    return redirect('/')
 
-@login_required(login_url='/login/')
-def lista_coments(request):
-    coment = Comentario.objects.filter()
-    dados = {'coments': coment}
-    return render(request, 'veranuncio.html', dados)
 
 @login_required(login_url='/login/')
 def lista_posts_historico(request):
@@ -42,12 +32,29 @@ def lista_posts_historico(request):
     dados = {'posts':post}
     return render(request, 'historico.html', dados)
 
-@login_required(login_url='/login/')
-def infoanuncio(request):
-    id_post = request.GET.get('id')
-    post = Post.objects.filter(id=id_post)
-    dados = {'posts': post}
-    return render(request, 'veranuncio.html', dados)
+def post_detail(request, id):
+    post = Post.objects.get(pk=id)
+    
+    comments = Comment.objects.filter(post_id=id)
+    total = 0
+    for i in comments:
+        total = total + 1
+    
+    context = {
+        'post': post,
+        'comments': comments,
+        'total': total,
+        'posts': post,
+        }
+
+    return render(request, 'veranuncio.html', context)
+
+# @login_required(login_url='/login/')
+# def infoanuncio(request):
+#     id_post = request.GET.get('id')
+#     post = Post.objects.filter(id=id_post)
+#     dados = {'posts': post}
+#     return render(request, 'veranuncio.html', dados)
     
 def criar_usuario(request):
     form = Usuarioform(request.POST)

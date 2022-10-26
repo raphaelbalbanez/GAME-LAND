@@ -35,10 +35,8 @@ urlpatterns = [
     path('GAMELAND/meus-dados/atualizar-dados/', views.criar_perfil),
     path('GAMELAND/meus-dados/atualizar-dados/submit', views.atualizar_dados),
     path('GAMELAND/meus-anuncios/', views.posts_usuario),
-    path('GAMELAND/ver-anuncio/', views.infoanuncio),
+    path('GAMELAND/<int:id>/', views.post_detail, name='post_detail' ),
     path('GAMELAND/meus-anuncios/historico/', views.lista_posts_historico),
-    path('GAMELAND/ver-anuncio/?id={{ post.id }}', views.criar_coment),
-    path('GAMELAND/ver-anuncio/submit', views.editar_coment),
-    path('GAMELAND/ver-anuncio/?id={{ post.id }}', views.lista_coments),
-    
+    path('GAMELAND/ver-anuncio/<int:id>', views.addcomment, name="ver-anuncio"),
+        
 ]
