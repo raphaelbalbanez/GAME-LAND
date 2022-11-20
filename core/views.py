@@ -3,6 +3,7 @@ from core.models import Post
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from .forms import Usuarioform
 from .forms import CommentForm
@@ -158,4 +159,14 @@ def delete_anuncio(request, id_post):
         post.delete()
     return redirect('/')
 
- 
+
+class AuthorCreateView(SuccessMessageMixin,):
+    model = User
+    success_url = '/success/'
+    success_message = "%(name)s was created successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            calculated_field=self.object.calculated_field,
+        )

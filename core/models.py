@@ -1,4 +1,4 @@
-from enum import unique
+##from enum import unique
 from unittest.util import _MAX_LENGTH
 from django.db import models
 from django.contrib.auth.models import User
@@ -17,7 +17,7 @@ class Post(models.Model):
         db_table = 'post'
     
     def __str__(self):
-        return self.titulo
+        return self.titulo         
     
     def get_data_post(self):
         return self.data_criacao.strftime('%d/%m/%Y %H:%M Hrs')
@@ -28,6 +28,9 @@ class Perfil(models.Model):
     telefone = models.CharField(max_length=16, null=True)
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.nome_completo
+    
 
 class Comment(models.Model):
     STATUS = (

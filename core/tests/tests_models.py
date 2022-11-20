@@ -45,7 +45,7 @@ class PostTestCase(unittest.TestCase):
     teste_comentario = Comment.objects.filter(comment__icontains='r6').first()
     self.assertEquals(teste_comentario.__str__(),'hugocamp')
 
-
+   
 
       
  
