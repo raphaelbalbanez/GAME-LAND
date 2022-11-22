@@ -10,14 +10,14 @@
 
 ## Installing the project on your machine ##
 
- #creat a venv on your machine# 
+ # creat a venv on your machine # 
       python3 -m venv .venv
       
- #enable venv in your local repository# 
+ # enable venv in your local repository # 
   ./.venv/Scripts/Activate
 
- #once activated we run the following command# 
+ # once activated we run the following command # 
   pip install -r requirements.txt
   
- #THE LAST STEP YOU CAN RUN OUR SERVER# 
+ # THE LAST STEP YOU CAN RUN OUR SERVER # 
   py manage.py runserver
