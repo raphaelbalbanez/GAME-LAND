@@ -38,6 +38,8 @@ urlpatterns = [
     path('GAMELAND/meus-dados/atualizar-dados/submit', views.atualizar_dados),
     path('GAMELAND/meus-anuncios/', views.posts_usuario),
     path('GAMELAND/<int:id>/', views.post_detail, name='post_detail' ),
+    path('/GAMELAND/<int:id>/', views.favourite_post, name='favourite_post'),
+    path('GAMELAND/favourites/', views.post_favourite_list, name='post_favourite_list'),
     # path('GAMELAND/meus-anuncios/historico/', views.lista_posts_historico),erro
     path('GAMELAND/ver-anuncio/<int:id>', views.addcomment, name="ver-anuncio"),
     path('like/<int:pk>/', views.darlike, name='dar_like'),

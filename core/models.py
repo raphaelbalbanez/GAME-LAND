@@ -14,6 +14,7 @@ class Post(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name='post_likes')
     imagem = models.ImageField(upload_to='imagens/', default='imagem')
+    favourites = models.ManyToManyField(User, related_name='favourite', blank=True)
     
     class Meta:
         db_table = 'post'

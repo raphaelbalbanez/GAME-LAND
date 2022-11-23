@@ -1,0 +1,19 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+
+<ul style="font-size: 18px">
+    {% for post in favourite_posts %}
+    <li>
+        {{ post.titulo }} 
+        <a href="/GAMELAND/{{post.id}}/{{post.slug}}">Visualizar</a>
+    </li>
+    
+    {% endfor %}
+    </ul>
+
+    <a href="/">
+        <button type="button">Retornar</button>
+    </a>
+
+{% endblock %}

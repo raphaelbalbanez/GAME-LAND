@@ -7,9 +7,46 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from .forms import Usuarioform
 from .forms import CommentForm
-# from .forms import ImageForm
 from .models import Comment, Perfil
 from datetime import datetime, timedelta
+
+def post_detail(request, id):
+    post = Post.objects.get(pk=id) 
+    comments = Comment.objects.filter(post_id=id)
+    tem_like = request.user in post.likes.all()
+    total = 0
+    for i in comments:
+        total = total + 1
+    
+    
+    context = {
+        'post': post,
+        'comments': comments,
+        'total': total,
+        'posts': post,
+        'likes': post.quantidade_likes(),
+        'tem_like': tem_like,
+        }
+
+    return render(request, 'veranuncio.html', context)
+
+def post_favourite_list(request):
+    user = request.user
+    favourite_posts = user.favourite.all()
+    context = {
+        'favourite_posts' : favourite_posts,
+    }
+    return render(request, 'post_favourite_list.html', context)
+
+
+def favourite_post(request, id):
+    url = request.META.get('HTTP_REFERER')
+    post = get_object_or_404(Post, id=id)
+    if post.favourites.filter(id=request.user.id).exists():
+        post.favourites.remove(request.user)
+    else:
+        post.favourites.add(request.user)
+    return HttpResponseRedirect(url)
 
 @login_required(login_url='/login/')
 def darlike(request, pk):
@@ -44,24 +81,7 @@ def addcomment(request, id):
 #     dados = {'posts':post}
 #     return render(request, 'historico.html', dados)
 
-def post_detail(request, id):
-    post = Post.objects.get(pk=id) 
-    comments = Comment.objects.filter(post_id=id)
-    tem_like = request.user in post.likes.all()
-    total = 0
-    for i in comments:
-        total = total + 1
-    
-    context = {
-        'post': post,
-        'comments': comments,
-        'total': total,
-        'posts': post,
-        'likes': post.quantidade_likes(),
-        'tem_like': tem_like
-        }
 
-    return render(request, 'veranuncio.html', context)
 
 # @login_required(login_url='/login/')
 # def infoanuncio(request):
