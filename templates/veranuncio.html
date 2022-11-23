@@ -22,9 +22,21 @@
             <label>Descricao:</label>
           
             {{ post.descricao }}
+
+            <br><br>
+
+            {{post.quantidade_likes}} likes
             
             
         </li>
+
+        <a href="{% url 'dar_like' post.id %}">
+           {% if tem_like %} 
+           Dislike
+           {% else %}
+           Like
+           {% endif %}
+        </a>
 
         {% if total > 0 %}
         <h2>{{total}} comments</h2>
@@ -37,7 +49,7 @@
           
           <li>
             
-              <h4>{{item.name}}<span>{{item.created_at|date:"d/m/Y"}}</span></h4>
+              <h4>{{item.name}}<span>-{{item.created_at|date:"d/m/Y"}}</span></h4>
               <p> {{item.comment}} </p>
 
           </li>

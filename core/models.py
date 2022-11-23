@@ -12,6 +12,7 @@ class Post(models.Model):
     data_criacao = models.DateTimeField(auto_now=True)
     Preço = models.FloatField()
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, related_name='post_likes')
     
     class Meta:
         db_table = 'post'
@@ -21,6 +22,9 @@ class Post(models.Model):
     
     def get_data_post(self):
         return self.data_criacao.strftime('%d/%m/%Y %H:%M Hrs')
+    
+    def quantidade_likes(self):
+        return self.likes.count()
 
 class Perfil(models.Model):
     nome_completo = models.CharField(max_length=70, null=True)

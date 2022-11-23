@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 from core.models import Post
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
@@ -9,6 +9,16 @@ from .forms import CommentForm
 from .models import Comment, Perfil
 from datetime import datetime, timedelta
 
+@login_required(login_url='/login/')
+def darlike(request, pk):
+    post = get_object_or_404(Post, id=pk)
+    if request.user in post.likes.all():
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+    return redirect('/GAMELAND/'+str(post.id))
+
+@login_required(login_url='/login/')
 def addcomment(request, id):
     url = request.META.get('HTTP_REFERER')
     if request.method == 'POST':
@@ -24,18 +34,18 @@ def addcomment(request, id):
 
 
 
-@login_required(login_url='/login/')
-def lista_posts_historico(request):
-    usuario = request.user
-    data_atual = datetime.now()
-    post = Post.objects.filter(usuario=usuario, data_criacao__lt=data_atual)
-    dados = {'posts':post}
-    return render(request, 'historico.html', dados)
+# @login_required(login_url='/login/')
+# def lista_posts_historico(request):
+#     usuario = request.user
+#     data_atual = datetime.now()
+#     post = Post.objects.filter(usuario=usuario, data_criacao__lt=data_atual)
+#     dados = {'posts':post}
+#     return render(request, 'historico.html', dados)
 
 def post_detail(request, id):
-    post = Post.objects.get(pk=id)
-    
+    post = Post.objects.get(pk=id) 
     comments = Comment.objects.filter(post_id=id)
+    tem_like = request.user in post.likes.all()
     total = 0
     for i in comments:
         total = total + 1
@@ -45,6 +55,8 @@ def post_detail(request, id):
         'comments': comments,
         'total': total,
         'posts': post,
+        'likes': post.quantidade_likes(),
+        'tem_like': tem_like
         }
 
     return render(request, 'veranuncio.html', context)
