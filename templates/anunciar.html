@@ -5,7 +5,7 @@
 <div align="center"><h1>Criar Anuncio<h1></div>
 
 
-<form action="submit" method="POST">{% csrf_token %}
+<form action="submit" method="POST" enctype="multipart/form-data">{% csrf_token %}
     <div align="center"><label>Título</label>
     <input type="number" name="id_post" value="{{post.id}}" hidden>
     <br>
@@ -19,7 +19,8 @@
     <br>
     <input type="number" step=0.01 name="Preço" value="{{post.Preço}}">
     <br>
-    <br><br>
+    <input name="imagem" type="file"> 
+    <br>
     <button type="submit">Salvar</button>
     <a href="/">
     <button type="button">Cancelar</button>

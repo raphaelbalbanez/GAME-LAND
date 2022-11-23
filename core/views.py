@@ -7,6 +7,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from .forms import Usuarioform
 from .forms import CommentForm
+# from .forms import ImageForm
 from .models import Comment, Perfil
 from datetime import datetime, timedelta
 
@@ -157,10 +158,11 @@ def submit_anunciar(request):
         Preço = request.POST.get('Preço')
         usuario = request.user
         id_post = request.POST.get('id_post') 
+        imagem = request.FILES.get('imagem')
         if id_post:
-            Post.objects.filter(usuario=usuario).update(titulo=titulo, descricao=descricao, Preço=Preço)
+            Post.objects.filter(usuario=usuario).update(titulo=titulo, descricao=descricao, Preço=Preço, imagem=imagem)
         else:
-            Post.objects.create(titulo=titulo, descricao=descricao, Preço=Preço, usuario=usuario)
+            Post.objects.create(titulo=titulo, descricao=descricao, Preço=Preço, imagem=imagem, usuario=usuario)
     return redirect('/')
 
 @login_required(login_url='/login/')

@@ -13,6 +13,7 @@ class Post(models.Model):
     Preço = models.FloatField()
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     likes = models.ManyToManyField(User, related_name='post_likes')
+    imagem = models.ImageField(upload_to='imagens/', default='imagem')
     
     class Meta:
         db_table = 'post'
