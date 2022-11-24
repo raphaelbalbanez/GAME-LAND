@@ -1,8 +1,6 @@
-{% extends "model-page.html" %}
-
-
 {% block content %}
 
+<script src="https://kit.fontawesome.com/47fbcab629.js" crossorigin="anonymous"></script>
 
     <h2>Meus dados</h2>
     <ul style="font-size: 18px">   
@@ -21,7 +19,9 @@
         {{ perfil.telefone }} 
         <br>
         <br>
-        <a href="atualizar-dados/?id={{ perfil.id }}">Editar</a>
+        <a href="atualizar-dados/?id={{ perfil.id }}">
+            <i class="fa-solid fa-pen"></i>EDITAR
+        </a>
         
     </li>
     {% endfor %}

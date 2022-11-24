@@ -1,6 +1,6 @@
-{% extends "model-page.html" %}
-
 {% block content %}
+
+<script src="https://kit.fontawesome.com/47fbcab629.js" crossorigin="anonymous"></script>
 
 </div>
     <h2>Meus Anuncios</h2>
@@ -9,18 +9,19 @@
         {% for post in posts %}
         <li>
             {{ post.titulo }} - {{ post.Preço }} 
-            ( <a href="anunciar/?id={{ post.id }}">Editar</a>
-            /<a href="anunciar/delete/{{ post.id }}">Excluir</a>)
+            ( <a href="anunciar/?id={{ post.id }}">
+                <i class="fa-solid fa-pencil"></i>Edit
+            </a>
+            /<a href="anunciar/delete/{{ post.id }}">
+                <i class="fa-solid fa-trash-can"></i>
+                Excluir
+            </a>)
         </li>
         {% endfor %}
         </ul>
 
     <br>
-    <!-- <a href="historico/">
-        <button type="button">Historico</button>
-    </a>
-     -->
-
+    
         <a href="/">
             <button type="button">Retornar</button>
         </a>

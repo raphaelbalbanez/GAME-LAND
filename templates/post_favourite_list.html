@@ -1,12 +1,12 @@
-{% extends "model-page.html" %}
-
 {% block content %}
 
 <ul style="font-size: 18px">
     {% for post in favourite_posts %}
     <li>
         {{ post.titulo }} 
-        <a href="/GAMELAND/{{post.id}}/{{post.slug}}">Visualizar</a>
+        <a href="/GAMELAND/{{post.id}}/{{post.slug}}">
+            <i class="fa-solid fa-eye"></i>
+        </a>
     </li>
     
     {% endfor %}

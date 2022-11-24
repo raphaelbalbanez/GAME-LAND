@@ -11,13 +11,12 @@ from .models import Comment, Perfil
 from datetime import datetime, timedelta
 
 def post_detail(request, id):
-    post = Post.objects.get(pk=id) 
+    post = Post.objects.get(id=id) 
     comments = Comment.objects.filter(post_id=id)
     tem_like = request.user in post.likes.all()
     total = 0
     for i in comments:
         total = total + 1
-    
     
     context = {
         'post': post,
@@ -26,6 +25,7 @@ def post_detail(request, id):
         'posts': post,
         'likes': post.quantidade_likes(),
         'tem_like': tem_like,
+        
         }
 
     return render(request, 'veranuncio.html', context)
@@ -152,7 +152,11 @@ def submit_login(request):
 @login_required(login_url='/login/')
 def lista_posts(request):
     post = Post.objects.filter()
-    dados = {'posts': post}
+    
+    dados = {
+        'posts': post,
+        }
+
     return render(request, 'home.html', dados)
 
 @login_required(login_url='/login/')

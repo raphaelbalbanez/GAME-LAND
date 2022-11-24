@@ -1,0 +1,93 @@
+h1 {
+    color: rgb(12, 1, 1);
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.navbar {
+    border-bottom: 1px solid rgb(21, 3, 85);
+    margin-bottom: 20px;
+    
+}
+
+.nav-bar-nav{
+    margin: auto;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-light .navbar-nav a.nav-link {
+
+    color: rgb(18, 180, 230);
+    letter-spacing: 1px;
+}
+
+/* Home */
+
+.add-div {
+    background-color:rgb(21, 3, 85);
+    cursor: pointer;
+    display:inline-block;
+    color: #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 25px;
+    
+}
+
+.fas.fa-plus{
+    color: #ccc;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+
+.list-div {
+    padding: 0;
+}
+
+.post-list {
+    padding-left: 0;
+}
+
+.post-item {
+    list-style: none;
+    font-size: 20px;
+    height: 250px;
+    padding-top: 10;
+    border: 1px dashed #ccc
+}
+
+.fa-solid.fa-eye, .far.fa-heart{
+    cursor:pointer;
+    margin:5px;
+    font-size:20px;
+    
+}
+
+.fa-solid.fa-eye{
+    color: blue;
+}
+
+.far.fa-heart{
+    color: red;
+}
+
+/* Rodapé */
+
+footer {
+    border-top: 2px solid #333;
+    height: 200px;
+    background-color: #0a011b;
+
+}
+
+footer p {
+    color: #f5f5f5;
+    text-align: center;
+    top: 50%;
+    position: relative;
+}
